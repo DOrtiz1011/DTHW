@@ -13,8 +13,6 @@ namespace DTHW
 
         public KeyCounts(string inputFile)
         {
-            InputFile = inputFile;
-
             if (CountsByName != null)
             {
                 CountsByName.Clear();
@@ -22,6 +20,7 @@ namespace DTHW
             }
 
             CountsByName = new Dictionary<string, int>();
+            InputFile = inputFile;
 
             ReadInputFile();
         }
@@ -52,12 +51,11 @@ namespace DTHW
 
         public void PrintResults()
         {
-            const string format = "The total for {0} is {1}";
             var stringBuiler = new StringBuilder();
 
             foreach (var keyValuePair in CountsByName)
             {
-                stringBuiler.AppendLine(string.Format(format, keyValuePair.Key, keyValuePair.Value));
+                stringBuiler.AppendLine(string.Format("The total for {0} is {1}", keyValuePair.Key, keyValuePair.Value));
             }
 
             Console.WriteLine(stringBuiler.ToString());
